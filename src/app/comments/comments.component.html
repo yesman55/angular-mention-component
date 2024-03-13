@@ -1,0 +1,21 @@
+<div class="comments-container">
+  <div *ngFor="let comment of comments" class="comment">
+    <fa-icon [icon]="faComment"></fa-icon>
+    {{ comment }}
+  </div>
+  <div class="comment-input">
+    <div class="comment-input-row">
+      <input type="text" [(ngModel)]="currentComment"
+      (keyup)="onCommentChange()"
+      (keyup.enter)="addComment()"
+      placeholder="Add a comment..."
+      >
+      <button (click)="addComment()">Add Comment</button> <!-- Add Comment button -->
+    </div>
+    <ul *ngIf="filteredUsers.length > 0" class="user-list">
+      <li *ngFor="let user of filteredUsers" (click)="selectUser(user)">
+        &#64;{{ user.name }}
+      </li>
+    </ul>
+  </div>
+</div>
